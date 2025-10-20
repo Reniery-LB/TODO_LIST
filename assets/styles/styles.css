@@ -15,10 +15,12 @@ body {
 
 .container {
     background: #fff;
-    padding: 32px;
+    padding: 48px;
     border-radius: 16px;
-    width: 90%;
-    max-width: 400px;
+    width: 95%;
+    max-width: 500px;
+    min-height: 300px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
 h1 {
@@ -48,6 +50,8 @@ button[type="submit"] {
     background-color: #0984e3;
     color: white;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex-shrink: 0; 
 }
 
 button[type="submit"]:hover {
@@ -64,7 +68,7 @@ ul {
     align-items: center;
     gap: 10px;
     margin-bottom: 11px;
-
+    flex-wrap: wrap;
 }
 
 .task-text {
@@ -88,5 +92,31 @@ ul {
 
 #todo-list li button:hover {
   background-color: #ff7675;
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 95%;
+    padding: 24px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  input[type="text"] {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  button[type="submit"] {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  #todo-list li button {
+    padding: 4px 8px;
+    font-size: 14px;
+  }
 }
 
