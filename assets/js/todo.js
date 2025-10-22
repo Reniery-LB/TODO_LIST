@@ -48,12 +48,64 @@ function updateTodoList()
         deleteButton.textContent = 'Eliminar';
         deleteButton.addEventListener('click', () => removeTask(index));
 
+        const editButton = document.createElement('button');
+        editButton.textContent = 'Editar';
+        editButton.type = 'button';
+        editButton.addEventListener('click', () => showEditForm(index, taskObj.text))
+
         li.appendChild(checkbox);
         li.appendChild(span);
+        li.appendChild(editButton);
         li.appendChild(deleteButton);
 
         ul.appendChild(li);
     });
+}
+
+function showEditForm(index, currentText){
+    let existingForm = document.getElementById('edit-form');
+    if (existingForm) existingForm.remove();
+
+    const container = document.querySelector('.container');
+    const form = document.createElement('form');
+    form.id = 'edit-form';
+
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.value = currentText;
+    input.required = true;
+
+    const saveButton = document.createElement('button');
+    saveButton.textContent = 'Guardar cambios';
+    saveButton.type = 'submit';
+
+    const cancelButton = document.createElement('button');
+    cancelButton.textContent = 'Cancelar';
+    cancelButton.type = 'button';
+    cancelButton.addEventListener('click', () => form.remove());
+
+    form.appendChild(input);
+    form.appendChild(saveButton);
+    form.appendChild(cancelButton);
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        updateTask(index, input.value.trim());
+        form.remove();
+    });
+
+    container.appendChild(form);
+}
+
+function updateTask(index, newText) {
+    let tasks = JSON.parse(window.localStorage.getItem('tasks')) || [];
+    if (newText === '') {
+        alert('La tarea no puede quedar vacía.');
+        return;
+    }
+    tasks[index].text = newText;
+    window.localStorage.setItem('tasks', JSON.stringify(tasks));
+    updateTodoList();
 }
 
 function toggleDone(index) {

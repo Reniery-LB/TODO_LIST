@@ -94,29 +94,66 @@ ul {
   background-color: #ff7675;
 }
 
+#edit-form {
+  margin-top: 16px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+}
+
+#edit-form input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  border: 2px solid #74b9ff;
+  border-radius: 8px;
+  outline: none;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+#edit-form button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease;
+}
+
+#edit-form button[type="submit"] {
+  background-color: #0984e3;
+  color: #fff;
+}
+
+#edit-form button[type="submit"]:hover {
+  background-color: #74b9ff;
+}
+
+#edit-form button[type="button"] {
+  background-color: #d63031;
+  color: #fff;
+}
+
+#edit-form button[type="button"]:hover {
+  background-color: #ff7675;
+}
+
 @media (max-width: 480px) {
-  .container {
-    width: 95%;
-    padding: 24px;
+  #edit-form {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
   }
 
-  h1 {
-    font-size: 24px;
+  #edit-form input[type="text"] {
+    width: 100%;
   }
 
-  input[type="text"] {
-    font-size: 14px;
-    padding: 8px;
-  }
-
-  button[type="submit"] {
-    font-size: 14px;
-    padding: 8px 12px;
-  }
-
-  #todo-list li button {
-    padding: 4px 8px;
-    font-size: 14px;
+  #edit-form button {
+    width: 100%;
+    padding: 10px;
   }
 }
 
